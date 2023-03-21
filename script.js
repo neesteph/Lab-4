@@ -31,7 +31,7 @@ FETCH DATA
 let collision;
 
 // Fetch GeoJSON from github URL, convert response to JSON, and store response as variable 
-fetch('https://raw.githubusercontent.com/neesteph/Lab-4/main/ggr472-lab4/data/pedcyc_collision_06-21.geojson')
+fetch('https://raw.githubusercontent.com/neesteph/Lab-4/main/data/pedcyc_collision_06-21.geojson')
     .then(response => response.json())      // Store response as JSON format
     .then(response => {
         console.log(response);      // Check response in console
