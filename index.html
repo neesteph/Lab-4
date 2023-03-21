@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Pedestrian and Cyclist Collisions in Toronto</title>
+
+    <!-- mapbox API -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css' rel='stylesheet' />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Turf.js -->
+    <script src='https://unpkg.com/@turf/turf@6/turf.min.js'></script>
+
+    <!-- Mapbox Geocoding -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css"
+        type="text/css">    
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <!-- MAP CONTAINER -->
+    <div id='map' class='map'></div>
+
+    <!-- This will create a container with a search bar and return extent button -->
+    <div class='map-overlay-search'>
+        
+        <label>Search for location</label>
+
+        <!-- This search bar allows users to search for a location in the map --> 
+        <div id="geocoder" class="geocoder"></div>
+
+        <!-- When this button is clicked on, the map will return to its initial extent -->
+        <button type="button" class="btn btn-primary btn-sm" id="returnbutton">Return to full extent</button>
+
+    </div>
+
+    <!-- This will create a container for the check boxes of different layers -->
+    <div class='map-overlay-data'>
+
+        <label>Filter map view</label>
+
+        <!-- Check box for legend -->
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="legendCheck">
+            <label class="form-check-label" for="flexCheckDefault">
+                Legend
+            </label>
+        </div>
+
+        <!-- Check box for neighbourhood layer -->
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="neighCheck">
+            <label class="form-check-label" for="flexCheckDefault">
+                Neighbourhoods
+            </label>
+        </div>
+
+        <!-- Check box for bounding box -->
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="bboxCheck">
+            <label class="form-check-label" for="flexCheckDefault">
+                Bounding Box
+            </label>
+        </div>
+
+        <!-- Check box for hex grid -->
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="hexCheck">
+            <label class="form-check-label" for="flexCheckDefault">
+                Hex Grid
+            </label>
+        </div>
+
+        <!-- Check box for injury layer -->
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="injuryCheck">
+            <label class="form-check-label" for="flexCheckDefault">
+                Injury Type
+            </label>
+        </div>
+
+    </div>
+
+<!-- This will create a legend-->
+    <div id='legend' class='legend'>
+        
+        <h6>Number of Collisions</h6>
+            <div><span style='background-color: #a7dcfa'></span>0-9</div>
+            <div><span style='background-color: #5ebdf2'></span>10-19</div>
+            <div><span style='background-color: #139fed'></span>20-29</div>
+            <div><span style='background-color: #0f6fd6'></span>30-39</div>
+            <div><span style='background-color: #0957ab'></span>40-49</div>
+            <div><span style='background-color: #01317d'></span>>=50</div>
+        
+        <br>
+
+        <h6>Type of Injury</h6>
+            <div><span style='background-color: #8af280'></span>None</div>
+            <div><span style='background-color: #faf443'></span>Minor</div>
+            <div><span style='background-color: #ffc619'></span>Minimal</div>
+            <div><span style='background-color: #fa5e37'></span>Major</div>
+            <div><span style='background-color: #d00a0a'></span>Fatal</div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
